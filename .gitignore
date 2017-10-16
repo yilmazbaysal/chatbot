@@ -55,6 +55,7 @@ coverage.xml
 local_settings.py
 
 *.sqlite3
+chatbot/static/
 
 # Flask stuff:
 instance/

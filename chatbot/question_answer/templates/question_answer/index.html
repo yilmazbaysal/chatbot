@@ -1,0 +1,28 @@
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+
+{% load material_form %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <center>
+        <div style="width: 100%">
+            <form action="" method="post" style="width: 80%">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="btn" type="submit" value="Ask!"/>
+            </form>
+        </div>
+    </center>
+
+
+</head>
+<body>
+
+</body>
+</html>

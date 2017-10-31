@@ -7,7 +7,7 @@ class QuestionForm(forms.Form):
         max_length=200,
         widget=forms.TextInput(
             attrs={
-                'class': 'form-input',
+                'class': 'form-control input-lg',
                 'placeholder': 'Enter your question here!',
             }
         )

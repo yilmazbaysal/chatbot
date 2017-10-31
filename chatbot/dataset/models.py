@@ -2,9 +2,11 @@ import os
 from django.db import models
 from django.utils import timezone
 
+DATA_SET_MEDIA_PATH = 'data_set'
+
 
 def data_file_upload_directory(instance, filename):
-    return 'data_set/{0}/{1}'.format(timezone.now().strftime('%Y'), os.path.basename(filename))
+    return os.path.join(DATA_SET_MEDIA_PATH, os.path.basename(filename))
 
 
 class DataFile(models.Model):

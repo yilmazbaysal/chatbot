@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dataset',
     'question_answer',
+
+    # After all apps
+    'django_cleanup',
 ]
 
 MIDDLEWARE_CLASSES = [

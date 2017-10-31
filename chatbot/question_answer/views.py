@@ -32,7 +32,7 @@ def get_answer(request):
     reply = bot.reply("localuser", question)
 
     data = {
-        'answer': 'Answer: {}'.format(reply)
+        'answer': '{}'.format(reply)
     }
 
     return JsonResponse(data)

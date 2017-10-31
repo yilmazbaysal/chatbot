@@ -10,6 +10,9 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <!-- Logo font -->
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+
     <style>
         html,
         body {
@@ -19,7 +22,7 @@
         .form-container {
             display: table;
             width: 100%;
-            height: 40%; /* set a pixel height and then remove the body,html height */
+            height: 45%; /* set a pixel height and then remove the body,html height */
             vertical-align: bottom;
         }
         .form-container-inner {
@@ -27,7 +30,8 @@
             vertical-align: bottom;
         }
         .form-container .search {
-            padding: 3%;
+            padding-left: 3%;
+            padding-right: 3%;
             max-width: 980px; /*max width of search*/
             margin: 0 auto;
         }
@@ -39,6 +43,26 @@
         .form-container .search.has-button .btn {
             margin-top: 5px;
             width: 100%;
+        }
+
+        .answer {
+            text-align: center;
+            font-style: italic;
+            position: relative;
+
+            /*To be able to put in the center*/
+            padding: 3%;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 90px;
+        }
+
+        .answer {
+            font-size: 16px;
         }
 
         @media (min-width:480px) {
@@ -53,18 +77,16 @@
                 width: auto;
                 margin: 0;
             }
+
+            .logo {
+                font-size: 130px;
+            }
+
+            .answer {
+                font-size: 25px;
+            }
         }
 
-        .answer {
-            text-align: left;
-            font-style: italic;
-            position: relative;
-
-            /*To be able to put in the center*/
-            padding: 3%;
-            max-width: 980px;
-            margin: 0 auto;
-        }
     </style>
 </head>
 
@@ -75,7 +97,7 @@
             <form id="question-form" method="post" class="search has-button">
                 {% csrf_token %}
 
-                <h1 class="no-margin-top h1">ChatBot</h1>
+                <h1 class="no-margin-top logo">ChatBot</h1>
 
                 <div class="form-group">
                     {{ form.as_p }}

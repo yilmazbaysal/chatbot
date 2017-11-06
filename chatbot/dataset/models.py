@@ -12,7 +12,7 @@ def data_file_upload_directory(instance, filename):
 class DataFile(models.Model):
     mnemonic = models.CharField(max_length=100)
     file = models.FileField(upload_to=data_file_upload_directory)
-    is_processed = models.BooleanField(default=False)
+    date_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.mnemonic

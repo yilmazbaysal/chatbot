@@ -1,4 +1,6 @@
 import os
+import uuid
+
 from django.conf import settings
 from django.http import JsonResponse
 
@@ -24,8 +26,12 @@ def get_answer(request):
     # Get the question
     question = request.POST.get('question')
 
+    # Create a unique identifier for the session, if does not have
+    if request.session.get('unique_identifier', None) is None:
+        request.session['unique_identifier'] = str(uuid.uuid4())
+
     # Get answer from the bot
-    reply = BOT_INSTANCE.reply("localuser", question)
+    reply = BOT_INSTANCE.reply(request.session['unique_identifier'], question)
 
     # Create context which will be sent to the front end
     data = {

@@ -44,3 +44,6 @@ def add_question(filename, keywords, answers):
             file.write("- " + answers[i] + "\n")
 
         file.write("\n")
+
+    return file_path
+

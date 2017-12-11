@@ -52,9 +52,6 @@ def reload_dataset(dataset_media_path):
 def _reloaded_dataset_in_background(dataset_media_path):
     global BOT_INSTANCE
 
-    # Wait until the changes reflected on file system
-    sleep(10)
-
     # Data set path
     data_set_directory = os.path.join(settings.MEDIA_ROOT, dataset_media_path)
 

@@ -1,5 +1,7 @@
 import os
 import uuid
+from threading import Thread
+from time import sleep
 
 from django.conf import settings
 from django.http import JsonResponse
@@ -42,7 +44,16 @@ def get_answer(request):
 
 # This function creates new bot instance and loads the latest version of the dataset
 def reload_dataset(dataset_media_path):
+    # Reinitialize the bot at the background
+    background_thread = Thread(target=_reloaded_dataset_in_background, args=(dataset_media_path, ))
+    background_thread.start()
+
+
+def _reloaded_dataset_in_background(dataset_media_path):
     global BOT_INSTANCE
+
+    # Wait until the changes reflected on file system
+    sleep(10)
 
     # Data set path
     data_set_directory = os.path.join(settings.MEDIA_ROOT, dataset_media_path)

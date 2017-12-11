@@ -6,7 +6,7 @@ var question_form = $('#question-form');
             data: question_form.serialize(),
             success: function (data) {
                 // Change the text in the answer area
-                $('#answer-text').text(data['answer']);
+                $('#answer-text').html(data['answer']);
             },
             error: function() {
                 alert('Something went wrong!')

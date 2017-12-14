@@ -1,3 +1,4 @@
+import locale
 import os
 import uuid
 from itertools import permutations
@@ -21,6 +22,9 @@ def generate_datafile(keywords, answers):
             return None
 
     file = open(file_path, 'w')
+
+    # Clean empty keywords
+    keywords = [kw_list for kw_list in keywords if kw_list]
 
     # Find all combinations of the given keywords
     for p_keys in permutations(keywords):

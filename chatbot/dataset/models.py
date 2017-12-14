@@ -1,6 +1,7 @@
 import os
 from django.db import models
-from django.utils import timezone
+
+from question_answer.views import reload_dataset
 
 DATA_SET_MEDIA_PATH = 'data_set'
 
@@ -16,3 +17,15 @@ class DataFile(models.Model):
 
     def __str__(self):
         return self.mnemonic
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        super(DataFile, self).save()
+
+        # Reinitialize the bot instance
+        reload_dataset(DATA_SET_MEDIA_PATH)
+
+    def delete(self, using=None, keep_parents=False):
+        super(DataFile, self).delete()
+
+        # Reinitialize the bot instance
+        reload_dataset(DATA_SET_MEDIA_PATH)

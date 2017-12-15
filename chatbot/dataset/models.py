@@ -14,6 +14,7 @@ class DataFile(models.Model):
     mnemonic = models.CharField(max_length=100)
     file = models.FileField(upload_to=data_file_upload_directory)
     date_time = models.DateTimeField(auto_now=True)
+    is_auto_generated = models.BooleanField(default=False)
 
     def __str__(self):
         return self.mnemonic
@@ -29,3 +30,11 @@ class DataFile(models.Model):
 
         # Reinitialize the bot instance
         reload_dataset(DATA_SET_MEDIA_PATH)
+
+
+class GeneratedDataFile(DataFile):
+    class Meta:
+        proxy = True
+
+        verbose_name = 'Generated File'
+        verbose_name_plural = 'Generated Files'

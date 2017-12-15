@@ -1,3 +1,5 @@
+import string
+
 from django import forms
 from django.contrib.postgres.forms import SimpleArrayField, ValidationError
 
@@ -20,8 +22,14 @@ def keyword_validator(keyword_list):
 
         # Keyword character check
         for letter in keyword_list[i]:
-            if not (letter.isdigit() or letter in ['-'] or letter.islower()):
+            if not letter.islower():
                 raise ValidationError('The keywords must be all lowercase!', code='invalid')
+            elif not letter.isdigit():
+                raise ValidationError('The all characters of keywords can not be numeric!', code='invalid')
+            else:
+                for c in letter:
+                    if c != '-' and c in string.punctuation:
+                        raise ValidationError('The keywords can not include any punctuation! Except "-".', code='invalid')
 
 
 class GenerateDataFileForm(forms.ModelForm):

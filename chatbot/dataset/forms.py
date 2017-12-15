@@ -24,12 +24,8 @@ def keyword_validator(keyword_list):
         for letter in keyword_list[i]:
             if not letter.islower():
                 raise ValidationError('The keywords must be all lowercase!', code='invalid')
-            elif letter.isdigit():
-                raise ValidationError('The all characters of keywords can not be numeric!', code='invalid')
-            else:
-                for c in letter:
-                    if c != '-' and c in string.punctuation:
-                        raise ValidationError('The keywords can not include any punctuation! Except "-".', code='invalid')
+            elif letter != '-' and letter in string.punctuation:
+                raise ValidationError('The keywords can not include punctuation! Except "-".', code='invalid')
 
 
 class GenerateDataFileForm(forms.ModelForm):

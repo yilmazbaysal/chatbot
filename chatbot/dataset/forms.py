@@ -20,8 +20,11 @@ def keyword_validator(keyword_list):
 
         # Keyword character check
         for letter in keyword_list[i]:
-            if not (letter.isdigit() or letter in ['-'] or letter.islower()):
-                raise ValidationError('The keywords must be all lowercase!', code='invalid')
+            if not (letter.isdigit() or letter in ['-', ' '] or letter.islower()):
+                raise ValidationError(
+                    "Keywords may only contain lowercase letters, digits, '-', and spaces.".format(letter),
+                    code='invalid'
+                )
 
 
 class GenerateDataFileForm(forms.ModelForm):

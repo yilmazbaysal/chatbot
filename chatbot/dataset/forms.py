@@ -24,7 +24,7 @@ def keyword_validator(keyword_list):
         for letter in keyword_list[i]:
             if not letter.islower():
                 raise ValidationError('The keywords must be all lowercase!', code='invalid')
-            elif not letter.isdigit():
+            elif letter.isdigit():
                 raise ValidationError('The all characters of keywords can not be numeric!', code='invalid')
             else:
                 for c in letter:

@@ -52,7 +52,7 @@ body {
     box-shadow: none;
 }
 
-.btn, .btn:focus.btn:active {
+.btn,.btn:focus,.btn:active {
     background-color: #7a6691;
     border-color: #7a6691;
     color: white;

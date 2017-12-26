@@ -31,3 +31,10 @@ class ProperNoun(Keyword):
 
         verbose_name = 'Proper Noun'
         verbose_name_plural = 'Proper Nouns'
+
+    def save(self, *args, **kwargs):
+        # Convert keyword to lowercase
+        self.keyword = self.keyword.lower()
+
+        # Save the edited keyword
+        return super(ProperNoun, self).save(*args, **kwargs)

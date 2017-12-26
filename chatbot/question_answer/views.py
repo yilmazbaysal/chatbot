@@ -1,17 +1,19 @@
 import os
 import uuid
 from threading import Thread
-from time import sleep
 
 from django.conf import settings
 from django.http import JsonResponse
 
+from question_answer.models import Keyword
 from .forms import QuestionForm
 from django.views.generic.edit import FormView
 from rivescript import RiveScript
 
 
 BOT_INSTANCE = None
+
+KEYWORDS = None
 
 
 # Displays the main template of the project
@@ -59,3 +61,15 @@ def _reloaded_dataset_in_background(dataset_media_path):
     BOT_INSTANCE = RiveScript(utf8=True)
     BOT_INSTANCE.load_directory(data_set_directory)
     BOT_INSTANCE.sort_replies()
+
+
+def reload_keywords():
+    """
+    This function fetches keywords from database and assign them to the global variable
+    :return: None
+    """
+    global KEYWORDS
+
+    KEYWORDS = Keyword.objects.all().values_list('keyword', flat=True)
+
+    print(KEYWORDS)

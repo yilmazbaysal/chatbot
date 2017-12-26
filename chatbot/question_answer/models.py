@@ -13,6 +13,9 @@ class Keyword(models.Model):
     keyword = models.CharField(max_length=50, unique=True, null=False, blank=False)
     keyword_type = models.CharField(max_length=1, choices=KEYWORD_TYPE_CHOICES, null=False, blank=False)
 
+    def __str__(self):
+        return self.keyword
+
 
 class StopWord(Keyword):
     class Meta:

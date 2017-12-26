@@ -66,5 +66,5 @@ class ProperNounAdmin(admin.ModelAdmin):
         obj.save()
 
 
-admin.site.register(StopWord, StopWordAdmin)
+# admin.site.register(StopWord, StopWordAdmin)
 admin.site.register(ProperNoun, ProperNounAdmin)

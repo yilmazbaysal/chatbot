@@ -16,6 +16,9 @@ class Keyword(models.Model):
     def __str__(self):
         return self.keyword
 
+    def clean(self):
+        self.keyword = self.keyword.lower()
+
 
 class StopWord(Keyword):
     class Meta:

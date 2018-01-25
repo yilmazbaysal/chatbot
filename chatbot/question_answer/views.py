@@ -103,7 +103,7 @@ def _reloaded_dataset_in_background(dataset_media_path):
     data_set_directory = os.path.join(settings.MEDIA_ROOT, dataset_media_path)
 
     # Train the bot
-    BOT_INSTANCE = RiveScript(utf8=True)
+    BOT_INSTANCE = RiveScript(utf8=True, strict=False)
     BOT_INSTANCE.load_directory(data_set_directory)
     BOT_INSTANCE.sort_replies()
 

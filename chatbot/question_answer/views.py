@@ -37,7 +37,8 @@ def spell_checker(question):
 
     new_question = []
     for token in question.split(' '):
-        if token.lower() not in KEYWORDS and not SPELL_CHECKER.check(token):
+        turkish_chars = ['ğ', 'Ğ', 'ı', 'İ', 'ö', 'Ö', 'ü', 'Ü', 'ş', 'Ş', 'ç', 'Ç']
+        if token.lower() not in KEYWORDS and not SPELL_CHECKER.check(token) and turkish_chars not in token:
             # There is a typo in the token and not a special keyword
             has_typo = True
 
